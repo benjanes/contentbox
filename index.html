@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Attempt at recreating the pitchfork review content box using some climbing locations and routes</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<style>
+#content-box {
+	position: relative;
+	width: 500px;
+	height: 332px;
+	overflow: hidden;
+	background: 0;
+	font-family: Verdana, sans-serif;
+}
+#content-box .tabs {
+	z-index: 1;
+	width: 60px;
+	height: 450px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	overflow: hidden;
+}
+#content-box .tabs a {
+	display: block;
+	width: 58px;
+	margin: 0px;
+	color: black;
+	background-color: #ccc;
+	vertical-align: center;
+	border-left: 2px solid #bbb;
+	border-bottom: 1px solid #bbb;
+	text-align: center;
+	height: 82px;
+	font-size: .7em;
+	padding: 0px;
+	text-decoration: none;
+}
+#content-box .tabs a.active {
+	background-color: white;
+}
+#content-box .loc-container {
+	background: #fff;
+	z-index: 2;
+	position: absolute;
+	width: 440px;
+	height: 332px;
+	overflow: hidden;
+}
+#content-box .loc {
+	position: relative;
+	overflow: hidden;
+	height: 332px;
+}
+#content-box .route-detail-container {
+	position: relative;
+	width: 440px;
+	height: 222px;
+	overflow: hidden;
+}
+#content-box .route-detail {
+	position: relative;
+	height: 222px;
+	overflow: hidden;
+}
+#content-box .route-img {
+	float: left;
+	width: 220px;
+	height: 222px;
+}
+#content-box .route-info {
+	position: relative;
+	margin-left: 220px;
+	padding: 6px;
+	height: 208px;
+	width: 208px;
+}
+#content-box .route-list {
+	width: 440px;
+	height: 110px;
+	overflow: hidden;
+	background: #f4f4f4;
+}
+#content-box .route-list a {
+	width: 100px;
+	height: 100px;
+	margin: 5px 0px 5px 8px;
+	overflow: hidden;
+	display: block;
+	float: left;
+}
+#content-box .route-list a:hover {
+	background-color: blue;
+}
+#content-box .route-list img:hover {
+	opacity: .6;
+}
+</style>
+<script>
+$('document').ready(function() {
+	var $routelist = $('.route-list a');
+	$routelist.hover(function () {
+		var b = $(this).index();
+		var c = b*(-222);
+		var d = c + 'px';
+		var $detail = $('.route-detail');
+		$detail.delay(500).animate({top: d}, 200);	
+	}, function () {
+		var $detail = $('.route-detail');
+		$detail.stop(true, true);
+	}); //end hover
+	$('.tabs a').click(function () {
+		$('.tabs a').removeClass('active');
+		$(this).addClass('active');
+		$('.route-detail').css('top', '0px');
+		var e = $(this).index();
+		var f = e*(-332);
+		var g = f + 'px';
+		var $loc = $('.loc');
+		$loc.animate({top: g}, 200);
+		return false;
+	}); //end click
+	
+}); //end ready
+</script>
+
+</head>
+
+<body>
+<div id="content-box">
+	<div class="tabs">
+		<a href="#loc-1" class="active"> 
+			Sugarloaf
+		</a>
+		<a href="#loc-2" class>
+			Phantom Spires
+		</a>
+		<a href="#loc-3" class>
+			Lover's Leap
+		</a>
+		<a href="#loc-4" class>
+			Eagle Lake Cliff
+		</a>
+	</div>
+	<div class="loc-container"> <!--this container goes around the route details and the list of routes for each loc-->
+		<div id="loc-1" class="loc">
+			<div class="route-detail-container">
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/FractureLarge.jpg"><img src="images/FractureMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/FractureLarge.jpg"><h3>The Fracture</h3></a>
+					</div>
+				</div>
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/HyperspaceLarge.jpg"><img src="images/HyperspaceMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/HyperspaceLarge.jpg"><h3>Hyperspace</h3></a>
+					</div>
+				</div>
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/SelfabuseLarge.jpg"><img src="images/SelfabuseMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/SelfabuseLarge.jpg"><h3>Self Abuse</h3></a>
+					</div>
+				</div>
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/TMsLarge.jpg"><img src="images/TMsMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/TMsLarge.jpg"><h3>TMs Deviation</h3></a>
+					</div>
+				</div>
+			</div>
+			<div class="route-list">
+				<a href="images/FractureLarge.jpg"><img src="images/FractureSmall.png"></a>
+				<a href="images/HyperspaceLarge.jpg"><img src="images/HyperspaceSmall.png"></a>
+				<a href="images/SelfabuseLarge.jpg"><img src="images/SelfabuseSmall.png"></a>
+				<a href="images/TMsLarge.jpg"><img src="images/TMsSmall.png"></a>
+			</div>
+		</div>
+		<div id="loc-2" class="loc">
+			<div class="route-detail-container">
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/CandylandLarge.jpg"><img src="images/CandylandMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/CandylandLarge.jpg"><h3>Candyland</h3></a>
+					</div>
+				</div>
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/LeanermeanerLarge.jpg"><img src="images/LeanermeanerMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/LeanermeanerLarge.jpg"><h3>Leaner and Meaner</h3></a>
+					</div>
+				</div>
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/RegularrouteLarge.jpg"><img src="images/RegularrouteMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/RegularrouteLarge.jpg"><h3>Regular Route</h3></a>
+					</div>
+				</div>
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/SteppinstoneLarge.jpg"><img src="images/SteppinstoneMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/SteppinstoneLarge.jpg"><h3>Steppin Stone</h3></a>
+					</div>
+				</div>
+			</div>
+			<div class="route-list">
+				<a href="images/CandylandLarge.jpg"><img src="images/CandylandSmall.png"></a>
+				<a href="images/LeanermeanerLarge.jpg"><img src="images/LeanermeanerSmall.png"></a>
+				<a href="images/RegularrouteLarge.jpg"><img src="images/RegularrouteSmall.png"></a>
+				<a href="images/SteppinstoneLarge.jpg"><img src="images/SteppinstoneSmall.png"></a>
+			</div>
+		</div>
+		<div id="loc-3" class="loc">
+			<div class="route-detail-container">
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/CorrugationLarge.jpg"><img src="images/CorrugationMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/CorrugationLarge.jpg"><h3>Corrugation Corner</h3></a>
+					</div>
+				</div>
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/SurrealisticLarge.jpg"><img src="images/SurrealisticMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/SurrealisticLarge.jpg"><h3>Surrealistic Pillar Direct</h3></a>
+					</div>
+				</div>
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/TheLineLarge.jpg"><img src="images/TheLineMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/TheLineLarge.jpg"><h3>The Line</h3></a>
+					</div>
+				</div>
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/TombstoneLarge.jpg"><img src="images/TombstoneMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/TombstoneLarge.jpg"><h3>Tombstone Terror</h3></a>
+					</div>
+				</div>
+			</div>
+			<div class="route-list">
+				<a href="images/CorrugationLarge.jpg"><img src="images/CorrugationSmall.png"></a>
+				<a href="images/SurrealisticLarge.jpg"><img src="images/SurrealisticSmall.png"></a>
+				<a href="images/TheLineLarge.jpg"><img src="images/TheLineSmall.png"></a>
+				<a href="images/TombstoneLarge.jpg"><img src="images/TombstoneSmall.png"></a>
+			</div>
+		</div>
+		<div id="loc-4" class="loc">
+			<div class="route-detail-container">
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/BusterbrownLarge.jpg"><img src="images/BusterbrownMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/BusterbrownLarge.jpg"><h3>Buster Brown</h3></a>
+					</div>
+				</div>
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/SeamstomeLarge.jpg"><img src="images/SeamstomeMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/SeamstomeLarge.jpg"><h3>Seams to Me</h3></a>
+					</div>
+				</div>
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/SpacetruckinLarge.jpg"><img src="images/SpacetruckinMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/SpacetruckinLarge.jpg"><h3>Space Truckin</h3></a>
+					</div>
+				</div>
+				<div class="route-detail">
+					<div class="route-img">
+						<a href="images/SpacewalkLarge.jpg"><img src="images/SpacewalkMed.png"></a>
+					</div>
+					<div class="route-info">
+						<a href="images/SpacewalkLarge.jpg"><h3>Space Walk</h3></a>
+					</div>
+				</div>
+			</div>
+			<div class="route-list">
+				<a href="images/BusterbrownLarge.jpg"><img src="images/BusterbrownSmall.png"></a>
+				<a href="images/SeamstomeLarge.jpg"><img src="images/SeamstomeSmall.png"></a>
+				<a href="images/SpacetruckinLarge.jpg"><img src="images/SpacetruckinSmall.png"></a>
+				<a href="images/SpacewalkLarge.jpg"><img src="images/SpacewalkSmall.png"></a>
+			</div>
+		</div>	
+	</div>
+</div>
+</body>
+</html>
