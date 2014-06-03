@@ -1,0 +1,108 @@
+#content-box {
+	position: relative;
+	width: 500px;
+	height: 332px;
+	overflow: hidden;
+	background: 0;
+	font-family: Verdana, sans-serif;
+}
+#content-box .tabs {
+	z-index: 1;
+	width: 60px;
+	height: 450px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	overflow: hidden;
+}
+#content-box .tabs a {
+	display: block;
+	width: 58px;
+	margin: 0px;
+	color: black;
+	background-color: #ccc;
+	vertical-align: center;
+	border-left: 2px solid #606060;
+	border-bottom: 1px solid #606060;
+	text-align: center;
+	height: 82px;
+	font-size: .7em;
+	padding: 0px;
+	text-decoration: none;
+}
+#content-box .tabs a:hover {
+	background-color: #909090;
+}
+#content-box .tabs a.active {
+	background-color: #787878;
+	color: white;
+}
+#content-box .loc-container {
+	z-index: 2;
+	position: absolute;
+	width: 440px;
+	height: 332px;
+	overflow: hidden;
+}
+#content-box .loc {
+	position: relative;
+	overflow: hidden;
+	height: 332px;
+}
+#content-box .route-detail-container {
+	position: relative;
+	width: 440px;
+	height: 222px;
+	overflow: hidden;
+}
+#content-box .route-detail {
+	position: relative;
+	height: 222px;
+	overflow: hidden;
+}
+#content-box .route-img {
+	float: left;
+	width: 220px;
+	height: 222px;
+}
+#content-box .route-info {
+	position: relative;
+	margin-left: 220px;
+	padding: 6px;
+	height: 208px;
+	width: 208px;
+}
+#content-box .route-info table {
+	height: 204px;
+}
+#content-box .route-info a{
+	text-decoration: none;
+	color: black;
+	font-size: .8em;
+	line-height: 50%;
+}
+#content-box table .description{
+	height: 150px;
+	vertical-align: bottom;
+	font-size: .7em;
+}
+#content-box .route-list {
+	width: 440px;
+	height: 110px;
+	overflow: hidden;
+	background: #787878;
+}
+#content-box .route-list a {
+	width: 100px;
+	height: 100px;
+	margin: 5px 0px 5px 8px;
+	overflow: hidden;
+	display: block;
+	float: left;
+}
+#content-box .route-list a:hover {
+	background-color: blue;
+}
+#content-box .route-list img:hover {
+	opacity: .6;
+}

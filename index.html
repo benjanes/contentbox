@@ -1,145 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Attempt at recreating the pitchfork review content box using some climbing locations and routes</title>
+<title>Content Box with Climbing Information Organized by Location</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-<style>
-#content-box {
-	position: relative;
-	width: 500px;
-	height: 332px;
-	overflow: hidden;
-	background: 0;
-	font-family: Verdana, sans-serif;
-}
-#content-box .tabs {
-	z-index: 1;
-	width: 60px;
-	height: 450px;
-	position: absolute;
-	right: 0;
-	top: 0;
-	overflow: hidden;
-}
-#content-box .tabs a {
-	display: block;
-	width: 58px;
-	margin: 0px;
-	color: black;
-	background-color: #ccc;
-	vertical-align: center;
-	border-left: 2px solid #bbb;
-	border-bottom: 1px solid #bbb;
-	text-align: center;
-	height: 82px;
-	font-size: .7em;
-	padding: 0px;
-	text-decoration: none;
-}
-#content-box .tabs a.active {
-	background-color: white;
-}
-#content-box .loc-container {
-	background: #fff;
-	z-index: 2;
-	position: absolute;
-	width: 440px;
-	height: 332px;
-	overflow: hidden;
-}
-#content-box .loc {
-	position: relative;
-	overflow: hidden;
-	height: 332px;
-}
-#content-box .route-detail-container {
-	position: relative;
-	width: 440px;
-	height: 222px;
-	overflow: hidden;
-}
-#content-box .route-detail {
-	position: relative;
-	height: 222px;
-	overflow: hidden;
-}
-#content-box .route-img {
-	float: left;
-	width: 220px;
-	height: 222px;
-}
-#content-box .route-info {
-	position: relative;
-	margin-left: 220px;
-	padding: 6px;
-	height: 208px;
-	width: 208px;
-}
-#content-box .route-list {
-	width: 440px;
-	height: 110px;
-	overflow: hidden;
-	background: #f4f4f4;
-}
-#content-box .route-list a {
-	width: 100px;
-	height: 100px;
-	margin: 5px 0px 5px 8px;
-	overflow: hidden;
-	display: block;
-	float: left;
-}
-#content-box .route-list a:hover {
-	background-color: blue;
-}
-#content-box .route-list img:hover {
-	opacity: .6;
-}
-</style>
-<script>
-$('document').ready(function() {
-	var $routelist = $('.route-list a');
-	$routelist.hover(function () {
-		var b = $(this).index();
-		var c = b*(-222);
-		var d = c + 'px';
-		var $detail = $('.route-detail');
-		$detail.delay(500).animate({top: d}, 200);	
-	}, function () {
-		var $detail = $('.route-detail');
-		$detail.stop(true, true);
-	}); //end hover
-	$('.tabs a').click(function () {
-		$('.tabs a').removeClass('active');
-		$(this).addClass('active');
-		$('.route-detail').css('top', '0px');
-		var e = $(this).index();
-		var f = e*(-332);
-		var g = f + 'px';
-		var $loc = $('.loc');
-		$loc.animate({top: g}, 200);
-		return false;
-	}); //end click
-	
-}); //end ready
-</script>
-
+<script type="text/javascript" src="contentbox.js"></script>
+<link rel="stylesheet" href="style.css"></link>
 </head>
 
 <body>
 <div id="content-box">
 	<div class="tabs">
 		<a href="#loc-1" class="active"> 
-			Sugarloaf
+			Tahoe
 		</a>
 		<a href="#loc-2" class>
-			Phantom Spires
+			Yosemite
 		</a>
 		<a href="#loc-3" class>
-			Lover's Leap
+			Tuolumne
 		</a>
 		<a href="#loc-4" class>
-			Eagle Lake Cliff
+			Indian Creek
 		</a>
 	</div>
 	<div class="loc-container"> <!--this container goes around the route details and the list of routes for each loc-->
@@ -147,168 +28,344 @@ $('document').ready(function() {
 			<div class="route-detail-container">
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/FractureLarge.jpg"><img src="images/FractureMed.png"></a>
+						<a href="images/fractureLarge.JPG"><img src="images/fractureMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/FractureLarge.jpg"><h3>The Fracture</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/fractureLarge.JPG"><h3>The Fracture</h3><h5>5.10d, 1 pitch</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>A short, thin finger crack that splits the face.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/HyperspaceLarge.jpg"><img src="images/HyperspaceMed.png"></a>
+						<a href="images/leanerLarge.JPG"><img src="images/leanerMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/HyperspaceLarge.jpg"><h3>Hyperspace</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/leanerLarge.JPG"><h3>Leaner and Meaner</h3><h5>5.11b, 1 pitch</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>Pumpy, overhanging finger and hand crack. At least a grade harder if you go stem-free.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/SelfabuseLarge.jpg"><img src="images/SelfabuseMed.png"></a>
+						<a href="images/nfaceLarge.JPG"><img src="images/nfaceMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/SelfabuseLarge.jpg"><h3>Self Abuse</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/nfaceLarge.JPG"><h3>The North Face</h3><h5>5.11a, 3 pitches</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>Beautiful flaring finger crack on the deceptively steep second pitch.</p>
+								</td>
+							</tr>
+						</table>									
 					</div>
 				</div>
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/TMsLarge.jpg"><img src="images/TMsMed.png"></a>
+						<a href="images/travelerLarge.JPG"><img src="images/travelerMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/TMsLarge.jpg"><h3>TMs Deviation</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/travelerLarge.JPG"><h3>Traveler Buttress</h3><h5>5.9, 4 pitches</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>A classic, varied romp up the tallest section of Lover's Leap.</p>
+								</td>
+							</tr>
+						</table>									
 					</div>
 				</div>
 			</div>
 			<div class="route-list">
-				<a href="images/FractureLarge.jpg"><img src="images/FractureSmall.png"></a>
-				<a href="images/HyperspaceLarge.jpg"><img src="images/HyperspaceSmall.png"></a>
-				<a href="images/SelfabuseLarge.jpg"><img src="images/SelfabuseSmall.png"></a>
-				<a href="images/TMsLarge.jpg"><img src="images/TMsSmall.png"></a>
+				<a href="images/fractureLarge.JPG"><img src="images/fractureSmall.jpg"></a>
+				<a href="images/leanerLarge.JPG"><img src="images/leanerSmall.jpg"></a>
+				<a href="images/nfaceLarge.JPG"><img src="images/nfaceSmall.jpg"></a>
+				<a href="images/travelerLarge.JPG"><img src="images/travelerSmall.jpg"></a>
 			</div>
 		</div>
 		<div id="loc-2" class="loc">
 			<div class="route-detail-container">
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/CandylandLarge.jpg"><img src="images/CandylandMed.png"></a>
+						<a href="images/moratoriumLarge.JPG"><img src="images/moratoriumMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/CandylandLarge.jpg"><h3>Candyland</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/moratoriumLarge.JPG"><h3>The Moratorium</h3><h5>5.11b, 4 pitches</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>Three long, technical pitches of stemming in an immaculate corner.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/LeanermeanerLarge.jpg"><img src="images/LeanermeanerMed.png"></a>
+						<a href="images/reedsLarge.JPG"><img src="images/reedsMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/LeanermeanerLarge.jpg"><h3>Leaner and Meaner</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/reedsLarge.JPG"><h3>Reed's Pinnacle Left</h3><h5>5.10a, 3 pitches</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>A wide journey up the left side of Reed's Pinnacle.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/RegularrouteLarge.jpg"><img src="images/RegularrouteMed.png"></a>
+						<a href="images/rostrumLarge.JPG"><img src="images/rostrumMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/RegularrouteLarge.jpg"><h3>Regular Route</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/rostrumLarge.JPG"><h3>The Rostrum</h3><h5>5.11c, 8 pitches</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>All-time classic test piece of physical crack climbing for the aspiring hard person.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/SteppinstoneLarge.jpg"><img src="images/SteppinstoneMed.png"></a>
+						<a href="images/ssLarge.JPG"><img src="images/ssMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/SteppinstoneLarge.jpg"><h3>Steppin Stone</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/ssLarge.JPG"><h3>Steck-Salathe</h3><h5>5.9+, 15 pitches</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>Burly, old-school, unrelenting, wide.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
 			<div class="route-list">
-				<a href="images/CandylandLarge.jpg"><img src="images/CandylandSmall.png"></a>
-				<a href="images/LeanermeanerLarge.jpg"><img src="images/LeanermeanerSmall.png"></a>
-				<a href="images/RegularrouteLarge.jpg"><img src="images/RegularrouteSmall.png"></a>
-				<a href="images/SteppinstoneLarge.jpg"><img src="images/SteppinstoneSmall.png"></a>
+				<a href="images/moratoriumLarge.JPG"><img src="images/moratoriumSmall.jpg"></a>
+				<a href="images/reedsLarge.JPG"><img src="images/reedsSmall.jpg"></a>
+				<a href="images/rostrumLarge.JPG"><img src="images/rostrumSmall.jpg"></a>
+				<a href="images/ssLarge.JPG"><img src="images/ssSmall.jpg"></a>
 			</div>
 		</div>
 		<div id="loc-3" class="loc">
 			<div class="route-detail-container">
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/CorrugationLarge.jpg"><img src="images/CorrugationMed.png"></a>
+						<a href="images/bombsLarge.JPG"><img src="images/bombsMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/CorrugationLarge.jpg"><h3>Corrugation Corner</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/bombsLarge.JPG"><h3>Bomb's over Tokyo</h3><h5>5.10c, 1 pitch</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>Fun roof to an ever-thinning and leaning finger crack.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/SurrealisticLarge.jpg"><img src="images/SurrealisticMed.png"></a>
+						<a href="images/lambLarge.JPG"><img src="images/lambMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/SurrealisticLarge.jpg"><h3>Surrealistic Pillar Direct</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/lambLarge.JPG"><h3>On the Lamb</h3><h5>5.9, 3 pitches</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>A unique sideways climb on Lamb Dome.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/TheLineLarge.jpg"><img src="images/TheLineMed.png"></a>
+						<a href="images/mathesLarge.JPG"><img src="images/mathesMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/TheLineLarge.jpg"><h3>The Line</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/mathesLarge.JPG"><h3>Matthes Crest</h3><h5>5.7, 2500'</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>Endless knife-edge traversing with massive exposure on either side.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/TombstoneLarge.jpg"><img src="images/TombstoneMed.png"></a>
+						<a href="images/pillarLarge.JPG"><img src="images/pillarMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/TombstoneLarge.jpg"><h3>Tombstone Terror</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/pillarLarge.JPG"><h3>Third Pillar of Dana</h3><h5>5.10b, 5 pitches</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>Beautiful granite in a spectacular location.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
 			<div class="route-list">
-				<a href="images/CorrugationLarge.jpg"><img src="images/CorrugationSmall.png"></a>
-				<a href="images/SurrealisticLarge.jpg"><img src="images/SurrealisticSmall.png"></a>
-				<a href="images/TheLineLarge.jpg"><img src="images/TheLineSmall.png"></a>
-				<a href="images/TombstoneLarge.jpg"><img src="images/TombstoneSmall.png"></a>
+				<a href="images/bombsLarge.JPG"><img src="images/bombsSmall.jpg"></a>
+				<a href="images/lambLarge.JPG"><img src="images/lambSmall.jpg"></a>
+				<a href="images/mathesLarge.JPG"><img src="images/mathesSmall.jpg"></a>
+				<a href="images/pillarLarge.JPG"><img src="images/pillarSmall.jpg"></a>
 			</div>
 		</div>
 		<div id="loc-4" class="loc">
 			<div class="route-detail-container">
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/BusterbrownLarge.jpg"><img src="images/BusterbrownMed.png"></a>
+						<a href="images/bluesunLarge.JPG"><img src="images/bluesunMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/BusterbrownLarge.jpg"><h3>Buster Brown</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/bluesunLarge.JPG"><h3>Blue Sun</h3><h5>5.10-, 1 pitch</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>Perfect hand crack that splits a face.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/SeamstomeLarge.jpg"><img src="images/SeamstomeMed.png"></a>
+						<a href="images/caveLarge.JPG"><img src="images/caveMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/SeamstomeLarge.jpg"><h3>Seams to Me</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/caveLarge.JPG"><h3>Cave Route</h3><h5>5.10d, 1 pitch</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>Thin hands jamming in a corner.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/SpacetruckinLarge.jpg"><img src="images/SpacetruckinMed.png"></a>
+						<a href="images/pinkLarge.JPG"><img src="images/pinkMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/SpacetruckinLarge.jpg"><h3>Space Truckin</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/pinkLarge.JPG"><h3>Think Pink</h3><h5>5.11-, 1 pitch</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>Overhanging wide hand jams in a corner.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<div class="route-detail">
 					<div class="route-img">
-						<a href="images/SpacewalkLarge.jpg"><img src="images/SpacewalkMed.png"></a>
+						<a href="images/scarfaceLarge.JPG"><img src="images/scarfaceMed.jpg"></a>
 					</div>
 					<div class="route-info">
-						<a href="images/SpacewalkLarge.jpg"><h3>Space Walk</h3></a>
+						<table>
+							<tr>
+								<td>
+									<a href="images/scarfaceLarge.JPG"><h3>Scarface</h3><h5>5.11, 1 pitch</h5></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="description">
+									<p>Picturesque thin hands jamming in perfect Wingate Sandstone.</p>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
 			<div class="route-list">
-				<a href="images/BusterbrownLarge.jpg"><img src="images/BusterbrownSmall.png"></a>
-				<a href="images/SeamstomeLarge.jpg"><img src="images/SeamstomeSmall.png"></a>
-				<a href="images/SpacetruckinLarge.jpg"><img src="images/SpacetruckinSmall.png"></a>
-				<a href="images/SpacewalkLarge.jpg"><img src="images/SpacewalkSmall.png"></a>
+				<a href="images/bluesunLarge.JPG"><img src="images/bluesunSmall.jpg"></a>
+				<a href="images/caveLarge.JPG"><img src="images/caveSmall.jpg"></a>
+				<a href="images/pinkLarge.JPG"><img src="images/pinkSmall.jpg"></a>
+				<a href="images/scarfaceLarge.JPG"><img src="images/scarfaceSmall.jpg"></a>
 			</div>
 		</div>	
 	</div>
